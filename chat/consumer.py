@@ -1,10 +1,9 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from datetime import datetime
-import asyncio
+
+from chat.serializers import MessageSerializer
 from .models import Message
 from asgiref.sync import sync_to_async
-from collections import defaultdict
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -19,7 +18,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             room_name=self.room_name).order_by("-timestamp")[:20]]
 
         for msg in reversed(last_msgs):
-            await self.send(text_data=json.dump(msg.to_dict()))
+            await self.send(text_data=json.dumps(MessageSerializer(msg).data))
 
     
     async def disconnect(self, close_code):
