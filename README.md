@@ -7,8 +7,17 @@
 - Channel
 - Web Socket
 
+## System Design
 
-Step for setup:
+<div align="center">
+  <img src="./systemdesign.png" alt="System Architecture" width="100%"/>
+</div>
+
+The diagram above illustrates the complete architecture of the ChatRoom application, showing the flow between clients, servers, application layer, and data layer.
+
+> **Note:** If the diagram doesn't display in your markdown viewer, you can open the [systemdesign.png](./systemdesign.png) file directly.
+
+## Setup Instructions
 
 
 ### Local Development
